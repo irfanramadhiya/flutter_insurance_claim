@@ -22,7 +22,6 @@ class ClaimListViewModel extends ChangeNotifier {
     try {
       allClaims = await _claimService.getClaims();
       claims = allClaims;
-      print(claims.length);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

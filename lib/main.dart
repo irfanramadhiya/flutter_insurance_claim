@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_insurance_claim/ui/claim_list/claim_list_view.dart';
-import 'package:flutter_insurance_claim/ui/claim_list/claim_list_view_model.dart';
+import 'package:flutter_insurance_claim/screen/claim_list/claim_list_view.dart';
+import 'package:flutter_insurance_claim/screen/claim_list/claim_list_view_model.dart';
 import 'package:provider/provider.dart';
 
 void main() {

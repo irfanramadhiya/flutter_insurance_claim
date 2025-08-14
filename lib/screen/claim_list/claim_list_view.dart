@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_insurance_claim/ui/claim_list/claim_list_view_model.dart';
+import 'package:flutter_insurance_claim/screen/claim_detail/claim_detail_view.dart';
+import 'package:flutter_insurance_claim/screen/claim_list/claim_list_view_model.dart';
 import 'package:provider/provider.dart';
 
 class ClaimListView extends StatelessWidget {
@@ -15,6 +16,7 @@ class ClaimListView extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        title: Text("Claims List"),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(48),
           child: Padding(
@@ -58,7 +60,11 @@ class ClaimListView extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       onTap: () {
-                        // Navigate to detail page
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (_) => ClaimDetailView(claim: claim),
+                          ),
+                        );
                       },
                     ),
                   );
