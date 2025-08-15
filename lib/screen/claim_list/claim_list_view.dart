@@ -4,15 +4,18 @@ import 'package:flutter_insurance_claim/screen/claim_list/claim_list_view_model.
 import 'package:provider/provider.dart';
 
 class ClaimListView extends StatelessWidget {
-  const ClaimListView({super.key});
+  final bool autoFetch;
+  const ClaimListView({super.key, this.autoFetch = true});
 
   @override
   Widget build(BuildContext context) {
     final vm = context.watch<ClaimListViewModel>();
 
-    Future.microtask(() {
-      vm.fetchClaims(context);
-    });
+    if (autoFetch) {
+      Future.microtask(() {
+        vm.fetchClaims(context);
+      });
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -37,15 +40,15 @@ class ClaimListView extends StatelessWidget {
       ),
       body: vm.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : vm.claims.isEmpty
+          : vm.displayedClaims.isEmpty
           ? Center(child: Text('No claims yet!'))
           : Container(
               margin: EdgeInsets.only(top: 8),
               child: ListView.builder(
                 padding: const EdgeInsets.all(8),
-                itemCount: vm.claims.length,
+                itemCount: vm.displayedClaims.length,
                 itemBuilder: (context, index) {
-                  final claim = vm.claims[index];
+                  final claim = vm.displayedClaims[index];
                   return Card(
                     elevation: 4,
                     margin: const EdgeInsets.symmetric(vertical: 8),

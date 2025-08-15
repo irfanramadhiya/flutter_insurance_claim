@@ -4,24 +4,27 @@ import 'package:flutter_insurance_claim/network/claim_service.dart';
 
 class ClaimListViewModel extends ChangeNotifier {
   bool isLoading = false;
-  List<Claim> claims = [];
+  bool hasFetchedOnce = true;
+
+  List<Claim> displayedClaims = [];
   List<Claim> allClaims = [];
+
   final ClaimService _claimService = ClaimService();
-  bool isFirstTime = true;
+  
   String _searchQuery = '';
 
   Future<void> fetchClaims(BuildContext context) async {
-    if(!isFirstTime){
+    if(!hasFetchedOnce){
       return;
     }
     
     isLoading = true;
-    isFirstTime = false;
+    hasFetchedOnce = false;
     notifyListeners();
 
     try {
       allClaims = await _claimService.getClaims();
-      claims = allClaims;
+      displayedClaims = allClaims;
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -41,9 +44,9 @@ class ClaimListViewModel extends ChangeNotifier {
 
   void _applySearch() {
     if (_searchQuery.isEmpty) {
-      claims = allClaims;
+      displayedClaims = allClaims;
     } else {
-      claims = allClaims
+      displayedClaims = allClaims
           .where(
             (claim) =>
                 claim.title.toLowerCase().contains(_searchQuery.toLowerCase()),
