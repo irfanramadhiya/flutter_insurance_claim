@@ -58,12 +58,21 @@ A Flutter application that displays insurance claims using mock data from the JS
 
 ### Claim List Screen
 Contains the main list of claims.
-![Claim List](assets/screenshots/claims_list_screen.png)
+
+<p align="center">
+   <img src="assets/screenshots/claims_list_screen.png" alt="Claim List" width="400"/>
+</p>
 
 ### Claim List Screen (Filtered)
 Shows the list after the user types in the search bar.
-![Filtered List](assets/screenshots/claims_list_screen_filtered.png)
+
+<p align="center">
+   <img src="assets/screenshots/claims_list_screen_filtered.png" alt="Filtered List" width="400"/>
+</p>
 
 ### Claim Detail Screen
 Displays detailed information about a single claim.
-![Claim Detail](assets/screenshots/claim_detail_screen.png)
+
+<p align="center">
+   <img src="assets/screenshots/claim_detail_screen.png" alt="Claim Detail" width="400"/>
+</p>
